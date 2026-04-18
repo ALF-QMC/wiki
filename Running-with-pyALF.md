@@ -1,15 +1,53 @@
 # Running with pyALF
 
-Using the [pyALF](https://github.com/ALF-QMC/pyALF) Python interface to set up, run, and analyze ALF simulations.
+[pyALF](https://github.com/ALF-QMC/pyALF) is a Python interface that wraps ALF's parameter generation, compilation, execution, and analysis into a single scripted workflow. It is the recommended way to run ALF for most users.
 
-## Setup
+Full documentation: [pyALF docs](https://alf.physik.uni-wuerzburg.de/pyalf-doc/source/front.html)
 
-_TODO: Installing pyALF, pointing it to the ALF source directory._
+> **pyALF requires HDF5.** ALF automatically downloads and compiles HDF5 on first compilation (~15 minutes).
 
-## Running a Simulation
+## Installation of pyALF
 
-_TODO: Example Python script that configures and launches a run._
+```bash
+pip install pyALF
+```
 
-## Collecting Results
+## Minimal Example
 
-_TODO: How pyALF handles output and analysis._
+```python
+from py_alf import ALF_source, Simulation
+
+# Point to your existing ALF source directory
+alf_src = ALF_source(alf_dir="/path/to/ALF")
+
+# Create a simulation with custom parameters
+sim = Simulation(
+    alf_src,
+    "Hubbard",                      # Hamiltonian name
+    {"Lattice_type": "Square"},     # Override default parameters
+    machine='GNU'                   # Compiler: 'GNU', 'intel', or 'PGI'
+)
+
+sim.compile()       # configures and compiles ALF (first run also builds HDF5)
+sim.run()           # runs the simulation
+sim.analysis()      # post-processes results
+```
+
+pyALF creates a directory tree, writes the `parameters` file, compiles ALF (if needed), runs the simulation, and calls the analysis programs — all from the Python script.
+
+## Working with Results
+
+After analysis, read results into a Pandas DataFrame:
+
+```python
+obs = sim.get_obs()
+
+# Access the internal energy and its error
+obs.iloc[0][['Ener_scal0', 'Ener_scal0_err']]
+```
+
+Simulations can be resumed by calling `sim.run()` again — new bins are appended to existing data.
+
+## Further Reading
+
+The [pyALF documentation](https://alf.physik.uni-wuerzburg.de/pyalf-doc/source/front.html) covers parameter scans, parallel runs, Jupyter notebooks, and advanced configuration. This wiki focuses on the underlying ALF code; see [[Running without pyALF]] for the direct Fortran workflow.
