@@ -1,0 +1,1 @@
+[ALF Repository](https://github.com/ALF-QMC/ALF) · [Documentation (PDF)](https://alf.physik.uni-wuerzburg.de/doc.pdf) · [pyALF](https://github.com/ALF-QMC/pyALF) · [Discord](https://discord.gg/VppWWEPMHa) · [Contact: alf@physik.uni-wuerzburg.de](mailto:alf@physik.uni-wuerzburg.de)
