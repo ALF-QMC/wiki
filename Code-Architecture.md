@@ -62,20 +62,21 @@ A single ALF run proceeds as follows:
    - Call `Alloc_obs`: allocate observable containers
    - Compute initial Green's function from scratch (`cgr1`)
 
-2. **Warmup** (first `NSweep` of first bin, or until `confin` is loaded)
-   - Sweep through all time slices, proposing field updates
-   - No measurements taken
-
-3. **Measurement loop** (`NBin` bins × `NSweep` sweeps per bin)
+2. **Monte Carlo loop** (`NBin` bins × `NSweep` sweeps per bin)
+   - All bins are treated identically — there is no dedicated warmup phase in the simulation. Thermalization bins are discarded later at analysis time via `n_skip`.
    - For each sweep:
-     - Traverse time slices $\tau = 1 \to L_\text{trot}$ and back
-     - At each slice: propose field updates (sequential / HMC / Langevin), update Green's function via rank-1 updates (`cgr2_2`)
-     - Every `Nwrap` slices: recompute Green's function from scratch for numerical stability (`cgr1` with UDV)
-     - At designated slices (`LOBS_ST` to `LOBS_EN`): call `Obser` (equal-time) and optionally `ObserT` (time-displaced)
-   - At end of sweep: optionally perform global moves
-   - At end of bin: write observables to disk, save configuration (`confout`)
+     - Optionally perform tempering exchanges and global moves
+     - Optionally perform Langevin/HMC updates
+     - **Upward sweep:** traverse time slices $\tau = 0 \to L_\text{trot}-1$
+       - At each slice: propose field updates (sequential / HMC / Langevin), update Green's function via rank-1 updates (`cgr2_2`)
+       - Every `Nwrap` slices: recompute Green's function from scratch for numerical stability (`cgr1` with UDV)
+       - On slices in `[LOBS_ST, LOBS_EN]`: call `Obser` (equal-time measurements)
+     - **Downward sweep:** traverse time slices $\tau = L_\text{trot} \to 1$
+       - Same update and measurement logic as the upward sweep
+     - At end of sweep: compute time-displaced correlations (`TAU_M`) if `Ltau = 1`
+   - At end of bin: average and write observables to disk (`Pr_obs`), save configuration (`confout`)
 
-4. **Finalization**
+3. **Finalization**
    - Write timing and acceptance statistics to `info`
    - Remove `RUNNING` lock file
 
