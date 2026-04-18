@@ -60,6 +60,8 @@ source configure.sh GNU noMPI
 make
 ```
 
+> **Recommended: Enable HDF5.** The above builds without HDF5 for simplicity. For production use, HDF5 is strongly recommended — it produces a single compressed `data.h5` file instead of many plain-text files. See [Switching to HDF5](#switching-to-hdf5) below. pyALF requires HDF5.
+
 ### 2. Set Up a Run Directory
 
 ALF ships with an example setup:
@@ -152,6 +154,32 @@ The `info` file contains a summary of the run: parameters used, acceptance rates
 | `Part_scalJ` | Particle number |
 
 Equal-time correlations (e.g. `SpinZ_eqJK` for spin structure factor in k-space) and time-displaced correlations (e.g. `Green_tau`) are also available when `Ltau=1`.
+
+---
+
+## Switching to HDF5
+
+The example above uses plain-text output for simplicity. For anything beyond a first test, **HDF5 is the recommended output format**:
+
+- Single compressed `data.h5` file instead of dozens of plain-text files
+- Required by pyALF
+- More efficient storage, especially for large lattices and time-displaced observables
+
+To switch, rebuild with the `HDF5` flag (ALF auto-downloads and compiles HDF5 if needed):
+
+```bash
+source configure.sh GNU noMPI HDF5
+make cleanlib cleanprog && make
+```
+
+Everything else stays the same — same `parameters` file, same run command. Only the analysis step changes:
+
+```bash
+# HDF5 analysis (instead of 'ana.out *')
+$ALF_DIR/Analysis/ana_hdf5.out
+```
+
+Results are written to a `res/` subdirectory (e.g. `res/Ener_scalJ`).
 
 ---
 

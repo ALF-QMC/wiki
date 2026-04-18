@@ -16,7 +16,7 @@ All HMC parameters are set in the `&VAR_QMC` namelist in the `parameters` file.
 | `N_HMC_sweeps` | `1` | Integer | Number of HMC trajectories between sequential sweeps |
 | `Sequential` | `.true.` | Logical | Keep sequential single-site updates active alongside HMC |
 
-The **trajectory length** is $T_m = \texttt{Delta\_t\_Langevin\_HMC} \times \texttt{Leapfrog\_Steps}$.
+The **trajectory length** is $T_m$ = `Delta_t_Langevin_HMC` × `Leapfrog_Steps`.
 
 ### Example
 

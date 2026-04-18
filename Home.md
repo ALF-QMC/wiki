@@ -27,9 +27,9 @@ Welcome to the ALF wiki! This is the practical companion to the [formal document
 Practical advice on choosing simulation parameters:
 
 - **[[Tuning and Best Practices]]** — Overview and general guidance
-  - [[HMC Parameters]] — Step size, leap-frog steps, mass matrix
-  - [[Stabilization Parameters]] — Nwrap and numerical stabilization
   - [[Discretization]] — Dtau and Trotter error tradeoffs
+  - [[Stabilization Parameters]] — Nwrap and numerical stabilization
+  - [[HMC Parameters]] — Step size, leap-frog steps, mass matrix
   - [[Tempering]] — Parallel tempering configuration
 
 ## Operations
