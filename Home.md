@@ -14,6 +14,7 @@ Welcome to the ALF wiki! This is the practical companion to the [formal document
 
 ## Using ALF
 
+- **[[Production Run Cycle]]** — Systematic study of an existing model from setup to results
 - **[[Writing a New Model]]** — Implement your own Hamiltonian using the ALF framework
   - [[Predefined Lattices]] — Square, Honeycomb, Bilayer, Triangular, Kagome, and more
   - [[Predefined Observables]] — Equal-time and time-displaced measurements

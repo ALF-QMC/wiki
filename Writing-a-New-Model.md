@@ -183,3 +183,32 @@ The `devel` flag enables runtime checks (bounds checking, NaN traps) that are in
 
 - [[Predefined Lattices]] — Bravais lattices you can use out of the box
 - [[Predefined Observables]] — Measurements you can enable without writing new code
+
+## Validating a New Model
+
+When implementing a new Hamiltonian, it is essential to verify correctness before running production simulations. Bugs in the operator setup or the HS decomposition can produce plausible-looking but wrong results. The following checks catch most implementation errors.
+
+### Non-Interacting Limit
+
+Set the interaction to zero (e.g., `Ham_U = 0`). The HS fields decouple completely and ALF should reproduce the exact free-fermion result — obtainable by diagonalizing the hopping matrix. This tests your lattice geometry, boundary conditions, hopping operators, and `Dtau` discretization. Any disagreement beyond the Trotter error indicates a bug in `Op_T` or the lattice setup.
+
+### Comparison with Exact Diagonalization
+
+For small systems (e.g., $2 \times 2$ or $4 \times 1$), compare ALF results with exact diagonalization (ED). Use a large `NSweep` and many bins to get precise QMC data, and a small `Dtau` to minimize Trotter error. Energy, density, and local correlators should agree within error bars after $\Delta\tau \to 0$ extrapolation. This is the single most powerful validation of a new model.
+
+> **Tip:** Build with `devel` mode (`source configure.sh GNU nompi devel`) for runtime checks (bounds checking, NaN traps) during this phase.
+
+### Symmetry Checks
+
+Verify that known symmetries are respected:
+- **Particle-hole symmetry** — For the repulsive Hubbard model on a bipartite lattice at half-filling (`Ham_chem = 0`): the average sign must be exactly 1 and the density must be exactly 0.5 per site per color. ALF automatically exploits this symmetry when detected (computes only one flavor, reconstructs the other).
+- **Time-reversal symmetry** — For attractive interactions (`Ham_U < 0`), similar simplifications apply automatically.
+- **Lattice symmetries** — Correlation functions should respect the point group of the lattice. An asymmetry in observables that should be symmetric signals an error in the operator definitions.
+
+### Dtau → 0 Extrapolation
+
+Run at 2–3 values of `Dtau` and verify that observables converge as $O(\Delta\tau^2)$ (symmetric Trotter decomposition). Deviations from this scaling indicate either an implementation error or insufficient numerical stabilization. See [[Discretization]].
+
+### Known Limits and Sum Rules
+
+If your model has analytically known limits (strong coupling, weak coupling, high temperature) or sum rules (e.g., frequency sum rules for spectral functions, particle number constraints), check them. These provide independent verification that does not rely on comparison codes.
