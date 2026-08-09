@@ -62,9 +62,9 @@ N_rebin = 1
 | Namelist | Purpose |
 |----------|---------|
 | `&VAR_ham_name` | Selects the Hamiltonian (e.g., `"Hubbard"`, `"Kondo"`, `"tV"`) |
-| `&VAR_lattice` | Lattice type and dimensions (see [[Predefined Lattices]]) |
+| `&VAR_lattice` | Lattice type and dimensions (see [Predefined Lattices](./Predefined-Lattices.md)) |
 | `&VAR_Model_Generic` | Universal parameters: `Dtau`, `Beta`, `N_SUN`, `N_FL`, twist angles, projector settings |
-| `&VAR_QMC` | QMC control: sweeps, bins, stabilization, update schemes (see [[Tuning and Best Practices]]) |
+| `&VAR_QMC` | QMC control: sweeps, bins, stabilization, update schemes (see [Tuning and Best Practices](./Tuning-and-Best-Practices.md)) |
 | `&VAR_<Model>` | Model-specific parameters (e.g., `&VAR_Hubbard` for hopping and interaction) |
 | `&VAR_errors` | Analysis parameters: `n_skip`, `N_rebin`, `N_Cov` |
 
@@ -142,4 +142,4 @@ $ALF_DIR/Analysis/ana_hdf5.out
 $ALF_DIR/Analysis/ana.out *
 ```
 
-See [[Analysis Tools]] for details.
+See [Analysis Tools](./Analysis-Tools.md) for details.

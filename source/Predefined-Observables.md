@@ -33,7 +33,7 @@ Called from your `ObserT` subroutine:
 | `Predefined_Obs_tau_SpinSUN_measure` | `SpinZ_tau` | Time-displaced SU(N) spin correlations | `PH` |
 | `Predefined_Obs_tau_SpinMz_measure` | `SpinZ_tau`, `SpinXY_tau`, `SpinT_tau` | Time-displaced spin correlations | `PH` |
 
-The `Channel` string determines the kernel used for [[Analytic Continuation]]: `'P'` (particle), `'PH'` (particle-hole), `'PP'` (particle-particle), `'T0'` (zero temperature).
+The `Channel` string determines the kernel used for [Analytic Continuation](./Analytic-Continuation.md): `'P'` (particle), `'PH'` (particle-hole), `'PP'` (particle-particle), `'T0'` (zero temperature).
 
 ## Scalar Observables
 

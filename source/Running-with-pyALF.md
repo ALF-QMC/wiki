@@ -50,4 +50,4 @@ Simulations can be resumed by calling `sim.run()` again — new bins are appende
 
 ## Further Reading
 
-The [pyALF documentation](https://alf.physik.uni-wuerzburg.de/pyalf-doc/source/front.html) covers parameter scans, parallel runs, Jupyter notebooks, and advanced configuration. This wiki focuses on the underlying ALF code; see [[Running without pyALF]] for the direct Fortran workflow.
+The [pyALF documentation](https://alf.physik.uni-wuerzburg.de/pyalf-doc/source/front.html) covers parameter scans, parallel runs, Jupyter notebooks, and advanced configuration. This wiki focuses on the underlying ALF code; see [Running without pyALF](./Running-without-pyALF.md) for the direct Fortran workflow.

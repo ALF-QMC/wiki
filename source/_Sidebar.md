@@ -1,28 +1,28 @@
 **ALF Wiki**
 
-- [[Home]]
-- [[Installation]]
-- [[Quick Start]]
-  - [[Running with pyALF]]
-  - [[Running without pyALF]]
-- [[Configuration]]
-- [[Production Run Cycle]]
-- [[Writing a New Model]]
-  - [[Predefined Lattices]]
-  - [[Predefined Observables]]
-- [[Analysis Tools]]
-  - [[HDF5 Output Format]]
-  - [[Bin Conversion]]
-  - [[Analytic Continuation]]
-- [[Tuning and Best Practices]]
-  - [[Discretization]]
-  - [[Stabilization Parameters]]
-  - [[HMC Parameters]]
-  - [[Tempering]]
-- [[Running on Clusters]]
-- [[Troubleshooting and FAQ]]
-- [[Developer Guide]]
-  - [[Test Suite]]
-  - [[Code Architecture]]
-  - [[Release Process]]
-- [[Glossary]]
+- [Home](./Home.md)
+- [Installation](./Installation.md)
+- [Quick Start](./Quick-Start.md)
+  - [Running with pyALF](./Running-with-pyALF.md)
+  - [Running without pyALF](./Running-without-pyALF.md)
+- [Configuration](./Configuration.md)
+- [Production Run Cycle](./Production-Run-Cycle.md)
+- [Writing a New Model](./Writing-a-New-Model.md)
+  - [Predefined Lattices](./Predefined-Lattices.md)
+  - [Predefined Observables](./Predefined-Observables.md)
+- [Analysis Tools](./Analysis-Tools.md)
+  - [HDF5 Output Format](./HDF5-Output-Format.md)
+  - [Bin Conversion](./Bin-Conversion.md)
+  - [Analytic Continuation](./Analytic-Continuation.md)
+- [Tuning and Best Practices](./Tuning-and-Best-Practices.md)
+  - [Discretization](./Discretization.md)
+  - [Stabilization Parameters](./Stabilization-Parameters.md)
+  - [HMC Parameters](./HMC-Parameters.md)
+  - [Tempering](./Tempering.md)
+- [Running on Clusters](./Running-on-Clusters.md)
+- [Troubleshooting and FAQ](./Troubleshooting-and-FAQ.md)
+- [Developer Guide](./Developer-Guide.md)
+  - [Test Suite](./Test-Suite.md)
+  - [Code Architecture](./Code-Architecture.md)
+  - [Release Process](./Release-Process.md)
+- [Glossary](./Glossary.md)

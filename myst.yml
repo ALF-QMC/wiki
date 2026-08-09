@@ -2,8 +2,8 @@
 version: 1
 project:
   id: b1d9732e-5576-4bcf-a9af-56b5dd347334
-  # title:
-  # description:
+  title: ALF Wiki
+  description: A wiki for the ALF project
   # keywords: []
   # authors: []
   github: https://github.com/ALF-QMC/wiki

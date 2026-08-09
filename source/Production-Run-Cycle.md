@@ -23,11 +23,11 @@ This cycle repeats until the data quality is sufficient for the question at hand
 - Models with larger energy scales (e.g., large `Ham_T`, strong spin-orbit coupling) may need smaller `Dtau`.
 - If `Nwrap = 1` still gives poor Green function precision (see below), reducing `Dtau` may help because it reduces the norm of the individual propagators.
 - Make sure `Beta / Dtau` is an integer to avoid rounding surprises.
-- For publication-quality results, run at 2–3 values of `Dtau` and extrapolate to $\Delta\tau \to 0$. The error is $O(\Delta\tau^2)$ with symmetric Trotter decomposition. See [[Discretization]].
+- For publication-quality results, run at 2–3 values of `Dtau` and extrapolate to $\Delta\tau \to 0$. The error is $O(\Delta\tau^2)$ with symmetric Trotter decomposition. See [Discretization](./Discretization.md).
 
 ### `Nwrap` — Stabilization Interval
 
-The Green function is propagated ("wrapped") from one time slice to the next via rank-1 updates. Every `Nwrap` slices, it is recomputed from scratch using a numerically stable UDV decomposition. See [[Stabilization Parameters]].
+The Green function is propagated ("wrapped") from one time slice to the next via rank-1 updates. Every `Nwrap` slices, it is recomputed from scratch using a numerically stable UDV decomposition. See [Stabilization Parameters](./Stabilization-Parameters.md).
 
 **Choose `Nwrap` as large as possible** while maintaining precise Green functions:
 - After a run, check the `info` file for:
@@ -80,7 +80,7 @@ CPU_MAX = 24.0   ! hours
 
 ### `Ltau` — Time-Displaced Measurements
 
-Set `Ltau = 1` to enable time-displaced Green function measurements ($G(\tau)$, spin correlations in $\tau$, etc.). This adds computational cost, so **only enable it when you need dynamical correlations** — e.g., for spectral functions via [[Analytic Continuation]]. For studies that only require equal-time observables, leave it at the default `Ltau = 0`.
+Set `Ltau = 1` to enable time-displaced Green function measurements ($G(\tau)$, spin correlations in $\tau$, etc.). This adds computational cost, so **only enable it when you need dynamical correlations** — e.g., for spectral functions via [Analytic Continuation](./Analytic-Continuation.md). For studies that only require equal-time observables, leave it at the default `Ltau = 0`.
 
 ### `Global_moves` — Ergodicity
 
@@ -92,7 +92,7 @@ For ground-state (PQMC) calculations, set `Projector = .true.` and choose `Theta
 
 ### HMC Parameters
 
-For continuous auxiliary fields, the Hybrid Monte Carlo (HMC) update scheme is available via `HMC = .true.`. The key control parameters are `Delta_t_Langevin_HMC`, `Leapfrog_steps`, and `N_HMC_sweeps`. See [[HMC Parameters]] for details.
+For continuous auxiliary fields, the Hybrid Monte Carlo (HMC) update scheme is available via `HMC = .true.`. The key control parameters are `Delta_t_Langevin_HMC`, `Leapfrog_steps`, and `N_HMC_sweeps`. See [HMC Parameters](./HMC-Parameters.md) for details.
 
 > HMC auto-tuning is under active development. A procedure to automatically determine efficient values for these hyper-parameters is being worked on.
 
@@ -148,7 +148,7 @@ When extending a run by appending bins, the new bins are concatenated with the o
 
 > **Note:** The `RUNNING` lock file prevents accidental concurrent runs in the same directory. If a previous run crashed, you must delete `RUNNING` manually before restarting.
 
-On HPC clusters, a common pattern is to include `bash out_to_in.sh` in the job script before the `srun` command, so resubmission automatically continues from the previous state. See [[Running on Clusters]] for examples.
+On HPC clusters, a common pattern is to include `bash out_to_in.sh` in the job script before the `srun` command, so resubmission automatically continues from the previous state. See [Running on Clusters](./Running-on-Clusters.md) for examples.
 
 ## Checking Your Results
 
@@ -177,9 +177,9 @@ After analysis, inspect these key diagnostics:
 
 ## See Also
 
-- [[Quick Start]] — First run tutorial
-- [[Tuning and Best Practices]] — Detailed parameter guidance
-- [[Stabilization Parameters]] — `Nwrap` and numerical stability in depth
-- [[HMC Parameters]] — HMC-specific tuning
-- [[Analysis Tools]] — Post-processing reference
-- [[Running on Clusters]] — HPC job submission and restart patterns
+- [Quick Start](./Quick-Start.md) — First run tutorial
+- [Tuning and Best Practices](./Tuning-and-Best-Practices.md) — Detailed parameter guidance
+- [Stabilization Parameters](./Stabilization-Parameters.md) — `Nwrap` and numerical stability in depth
+- [HMC Parameters](./HMC-Parameters.md) — HMC-specific tuning
+- [Analysis Tools](./Analysis-Tools.md) — Post-processing reference
+- [Running on Clusters](./Running-on-Clusters.md) — HPC job submission and restart patterns

@@ -42,7 +42,7 @@ The Green's function deviation exceeds the internal threshold (10). This indicat
 2. **Reduce `Dtau`** — finer imaginary-time discretization
 3. **Try a different stabilization scheme** — `LOG` mode extends accessible parameter ranges
 
-See [[Stabilization Parameters]] for details.
+See [Stabilization Parameters](./Stabilization-Parameters.md) for details.
 
 ### NaN or Inf in output
 Usually a sign of severe numerical instability. Check:

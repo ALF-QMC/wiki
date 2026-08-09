@@ -33,7 +33,7 @@ ALF supports both discrete Hubbard-Stratonovich (HS) fields (Ising-like, ±1) an
 
 ### Lattice and Observables
 
-Use the [[Predefined Lattices]] and [[Predefined Observables]] whenever possible. They produce output in the standard format that the analysis tools expect. Custom lattices and observables are straightforward to add but require more boilerplate.
+Use the [Predefined Lattices](./Predefined-Lattices.md) and [Predefined Observables](./Predefined-Observables.md) whenever possible. They produce output in the standard format that the analysis tools expect. Custom lattices and observables are straightforward to add but require more boilerplate.
 
 ## Step-by-Step
 
@@ -100,7 +100,7 @@ Called once at initialization. Responsibilities:
 
 1. Call `read_parameters()` (auto-generated)
 2. Compute `Ltrot = nint(Beta/Dtau)` (and `Thtrot` if projective)
-3. Set up the Bravais lattice (see [[Predefined Lattices]])
+3. Set up the Bravais lattice (see [Predefined Lattices](./Predefined-Lattices.md))
 4. Define hopping operators `Op_T(:,:)` — kinetic energy
 5. Define interaction operators `Op_V(:,:)` — Hubbard-Stratonovich decomposition
 6. Initialize auxiliary fields `nsigma`
@@ -139,11 +139,11 @@ If (Ltau == 1) then
 endif
 ```
 
-The `Channel` string (`'P'`, `'PH'`, `'PP'`, `'T0'`, …) determines the analytic continuation kernel. See [[Analytic Continuation]].
+The `Channel` string (`'P'`, `'PH'`, `'PP'`, `'T0'`, …) determines the analytic continuation kernel. See [Analytic Continuation](./Analytic-Continuation.md).
 
 #### `Obser` — Equal-Time Measurements
 
-Called once per time slice during measurements. Receives the Green function `GR(Ndim, Ndim, N_FL)`, the sign/phase `Phase`, and the time slice index `Ntau`. Use the predefined measurement routines (see [[Predefined Observables]]) or write custom contractions.
+Called once per time slice during measurements. Receives the Green function `GR(Ndim, Ndim, N_FL)`, the sign/phase `Phase`, and the time slice index `Ntau`. Use the predefined measurement routines (see [Predefined Observables](./Predefined-Observables.md)) or write custom contractions.
 
 #### `ObserT` — Time-Displaced Measurements
 
@@ -158,7 +158,7 @@ Additional procedures from `ham_base` can be overridden when needed:
 | `S0` | Bosonic action for continuous Hubbard-Stratonovich fields |
 | `Global_move` | Space-time global moves (e.g., Ising-field flips) |
 | `Global_move_tau` | Single-time-slice global moves |
-| `Apply_B_HMC` | Custom mass matrix for HMC (see [[HMC Parameters]]) |
+| `Apply_B_HMC` | Custom mass matrix for HMC (see [HMC Parameters](./HMC-Parameters.md)) |
 | `Ham_Langevin_HMC_S0` | Bosonic force for Langevin/HMC updates |
 
 To enable an override, uncomment the corresponding `procedure` line in the type declaration and implement it.
@@ -181,8 +181,8 @@ The `devel` flag enables runtime checks (bounds checking, NaN traps) that are in
 
 ## Available Building Blocks
 
-- [[Predefined Lattices]] — Bravais lattices you can use out of the box
-- [[Predefined Observables]] — Measurements you can enable without writing new code
+- [Predefined Lattices](./Predefined-Lattices.md) — Bravais lattices you can use out of the box
+- [Predefined Observables](./Predefined-Observables.md) — Measurements you can enable without writing new code
 
 ## Validating a New Model
 
@@ -207,7 +207,7 @@ Verify that known symmetries are respected:
 
 ### Dtau → 0 Extrapolation
 
-Run at 2–3 values of `Dtau` and verify that observables converge as $O(\Delta\tau^2)$ (symmetric Trotter decomposition). Deviations from this scaling indicate either an implementation error or insufficient numerical stabilization. See [[Discretization]].
+Run at 2–3 values of `Dtau` and verify that observables converge as $O(\Delta\tau^2)$ (symmetric Trotter decomposition). Deviations from this scaling indicate either an implementation error or insufficient numerical stabilization. See [Discretization](./Discretization.md).
 
 ### Known Limits and Sum Rules
 

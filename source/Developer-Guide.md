@@ -23,7 +23,7 @@ See [CONTRIBUTING.md](https://github.com/ALF-QMC/ALF/blob/master/CONTRIBUTING.md
 
 1. Create a feature branch from `master`
 2. Build with the `devel` flag for extra runtime checks: `source configure.sh GNU nompi devel`
-3. Run the test suite (see [[Test Suite]])
+3. Run the test suite (see [Test Suite](./Test-Suite.md))
 4. Update `CHANGELOG.md` with your changes
 5. Submit a pull request — CI runs automatically
 
@@ -50,6 +50,6 @@ make -j5 program
 
 ## Sub-Pages
 
-- [[Test Suite]] — Running and writing tests
-- [[Code Architecture]] — Module structure and data flow
-- [[Release Process]] — Versioning and release cycle
+- [Test Suite](./Test-Suite.md) — Running and writing tests
+- [Code Architecture](./Code-Architecture.md) — Module structure and data flow
+- [Release Process](./Release-Process.md) — Versioning and release cycle

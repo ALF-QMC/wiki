@@ -2,14 +2,14 @@
 
 Get a simulation running as quickly as possible. This page uses the **Hubbard model on a 6×6 square lattice** as a minimal working example.
 
-> **Prerequisites:** ALF must be compiled first — see [[Installation]].
+> **Prerequisites:** ALF must be compiled first — see [Installation](./Installation.md).
 
 ## Choose Your Workflow
 
 | Approach | Best for | Guide |
 |----------|----------|-------|
-| **pyALF** (Python) | New users, parameter scans, scripted workflows | [[Running with pyALF]] |
-| **Direct** (Fortran) | Full control, HPC jobs, custom setups | [[Running without pyALF]] |
+| **pyALF** (Python) | New users, parameter scans, scripted workflows | [Running with pyALF](./Running-with-pyALF.md) |
+| **Direct** (Fortran) | Full control, HPC jobs, custom setups | [Running without pyALF](./Running-without-pyALF.md) |
 
 ---
 
@@ -185,7 +185,7 @@ Results are written to a `res/` subdirectory (e.g. `res/Ener_scalJ`).
 
 ## Next Steps
 
-- [[Configuration]] — Understand all build and run options
-- [[Tuning and Best Practices]] — Choose good simulation parameters
-- [[Analysis Tools]] — Detailed analysis workflow
-- [[Writing a New Model]] — Implement your own Hamiltonian
+- [Configuration](./Configuration.md) — Understand all build and run options
+- [Tuning and Best Practices](./Tuning-and-Best-Practices.md) — Choose good simulation parameters
+- [Analysis Tools](./Analysis-Tools.md) — Detailed analysis workflow
+- [Writing a New Model](./Writing-a-New-Model.md) — Implement your own Hamiltonian

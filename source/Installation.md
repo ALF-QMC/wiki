@@ -55,7 +55,7 @@ ALF uses a two-step process: **configure** then **make**.
 source configure.sh <MACHINE> [MODE] [STAB] [options...]
 ```
 
-This sets environment variables (`ALF_FC`, `ALF_FLAGS_PROG`, etc.) that the Makefile reads. See [[Configuration]] for full details.
+This sets environment variables (`ALF_FC`, `ALF_FLAGS_PROG`, etc.) that the Makefile reads. See [Configuration](./Configuration.md) for full details.
 
 **Minimal examples:**
 
@@ -116,4 +116,4 @@ A successful run produces output like:
 100% tests passed, 0 tests failed out of N
 ```
 
-See [[Test Suite]] for running MPI and tempering tests.
+See [Test Suite](./Test-Suite.md) for running MPI and tempering tests.

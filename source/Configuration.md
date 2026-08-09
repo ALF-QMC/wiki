@@ -43,7 +43,7 @@ If MACHINE is unrecognized, ALF falls back to `gfortran` serial mode.
 | `STAB3` | `-DSTAB3` | Newest: separates large and small scales |
 | `LOG` | `-DSTABLOG` | Log storage for internal scales — extends accessible parameter ranges ($\beta$, interaction strength) |
 
-See [[Stabilization Parameters]] for guidance on choosing a scheme.
+See [Stabilization Parameters](./Stabilization-Parameters.md) for guidance on choosing a scheme.
 
 ## Optional Flags
 

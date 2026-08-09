@@ -40,7 +40,7 @@ Since the error is $\mathcal{O}(\Delta\tau^2)$, a linear fit in $\Delta\tau^2$ i
 
 ### Interaction with Other Parameters
 
-- **Nwrap:** The stabilization interval is `Nwrap × Dtau`. If you halve `Dtau`, you can double `Nwrap` and maintain the same stability. See [[Stabilization Parameters]].
+- **Nwrap:** The stabilization interval is `Nwrap × Dtau`. If you halve `Dtau`, you can double `Nwrap` and maintain the same stability. See [Stabilization Parameters](./Stabilization-Parameters.md).
 - **Beta:** Reducing `Dtau` at fixed `Beta` doubles `Ltrot`, roughly doubling the cost per sweep. The cost scales as $\mathcal{O}(L_\text{Trot} \times N_\text{dim}^3)$ for dense systems.
 - **Checkerboard decomposition:** When `Checkerboard = .T.`, the per-time-slice cost is reduced, making smaller `Dtau` more affordable.
 

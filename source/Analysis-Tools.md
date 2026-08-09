@@ -73,6 +73,6 @@ The following programs are called internally by `ana.out` / `ana_hdf5.out`. They
 
 ## Sub-Pages
 
-- [[HDF5 Output Format]] — Structure of `data.h5`
-- [[Bin Conversion]] — Converting plain-text output to HDF5
-- [[Analytic Continuation]] — Maximum entropy and stochastic analytic continuation
+- [HDF5 Output Format](./HDF5-Output-Format.md) — Structure of `data.h5`
+- [Bin Conversion](./Bin-Conversion.md) — Converting plain-text output to HDF5
+- [Analytic Continuation](./Analytic-Continuation.md) — Maximum entropy and stochastic analytic continuation

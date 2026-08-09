@@ -16,16 +16,16 @@ Each sub-page follows a consistent format:
 
 The first two topics apply to **every** ALF simulation. HMC and Tempering are relevant only when using those specific update schemes.
 
-### [[Discretization]]
+### [Discretization](./Discretization.md)
 The imaginary-time step `Dtau` controls the Trotter decomposition error. Too large and results are biased; too small and the simulation is unnecessarily expensive. Guidance on choosing `Dtau` and extrapolating to the continuous-time limit.
 
-### [[Stabilization Parameters]]
+### [Stabilization Parameters](./Stabilization-Parameters.md)
 Choosing `Nwrap` (the number of imaginary-time slices between QR stabilizations) and selecting a stabilization scheme (`STAB1`/`STAB2`/`STAB3`/`LOG`). Getting this wrong leads to numerical instability or wasted computation.
 
-### [[HMC Parameters]]
+### [HMC Parameters](./HMC-Parameters.md)
 Tuning the Hybrid Monte Carlo updating scheme: leap-frog step size (`Delta_t_Langevin_HMC`), number of integration steps (`Leapfrog_Steps`), the mass matrix preconditioner (`Apply_B_HMC`), and how many HMC trajectories to run between sequential sweeps (`N_HMC_sweeps`).
 
-### [[Tempering]]
+### [Tempering](./Tempering.md)
 Parallel tempering configuration: how to choose the temperature grid, how many replicas to use, and what exchange acceptance rates to target.
 
 ## General Advice
