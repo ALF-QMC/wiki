@@ -33,6 +33,7 @@ project:
         - file: source/Stabilization-Parameters.md
         - file: source/HMC-Parameters.md
         - file: source/Tempering.md
+        - file: source/pyALF_MALA_run.ipynb
     - file: source/Running-on-Clusters.md
     - file: source/Troubleshooting-and-FAQ.md
     - file: source/Developer-Guide.md
