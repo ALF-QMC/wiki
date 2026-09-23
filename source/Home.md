@@ -12,7 +12,7 @@ Welcome to the ALF wiki! This is the practical companion to the [formal document
 ---
 
 <!-- Manual Table of Contents -->
-
+<!-- 
 ## Getting Started
 
 - **[Installation](./Installation.md)** — Build ALF from source on macOS or Linux
@@ -54,3 +54,4 @@ Practical advice on choosing simulation parameters:
   - **[Code Architecture](./Code-Architecture.md)** — Module structure and data flow
   - **[Release Process](./Release-Process.md)** — Versioning and release cycle
 - **[Glossary](./Glossary.md)** — QMC terminology and ALF-specific concepts
+-->
