@@ -59,6 +59,6 @@ project:
     
 site:
   template: book-theme
-  # options:
-  #   favicon: favicon.ico
-  #   logo: site_logo.png
+  options:
+    favicon: images/alf_logo2-old.png
+    logo: images/alf_logo_wiki.png
