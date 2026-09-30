@@ -1,5 +1,9 @@
 # Analysis Tools
 
+```{warning}
+This wiki is still work in progress in big parts based on AI-generated content. Its content should therefore be taken with a grain of salt.
+```
+
 Post-processing simulation output: error analysis, Fourier transforms, and analytic continuation.
 
 ## Overview

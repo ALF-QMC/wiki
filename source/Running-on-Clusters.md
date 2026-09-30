@@ -1,5 +1,9 @@
 # Running on Clusters
 
+```{warning}
+This wiki is still work in progress in big parts based on AI-generated content. Its content should therefore be taken with a grain of salt.
+```
+
 Job scripts and practical tips for running ALF on HPC systems. Example scripts are provided in `Scripts_and_Parameters_files/`.
 
 ## General Advice

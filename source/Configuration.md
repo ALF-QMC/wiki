@@ -1,5 +1,9 @@
 # Configuration
 
+```{warning}
+This wiki is still work in progress in big parts based on AI-generated content. Its content should therefore be taken with a grain of salt.
+```
+
 Options for `configure.sh` and the ALF build system.
 
 ## configure.sh Usage

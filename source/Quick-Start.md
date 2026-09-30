@@ -1,5 +1,9 @@
 # Quick Start
 
+```{warning}
+This wiki is still work in progress in big parts based on AI-generated content. Its content should therefore be taken with a grain of salt.
+```
+
 Get a simulation running as quickly as possible. This page uses the **Hubbard model on a 6×6 square lattice** as a minimal working example.
 
 > **Prerequisites:** ALF must be compiled first — see [Installation](./Installation.md).

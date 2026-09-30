@@ -1,5 +1,9 @@
 # Running without pyALF
 
+```{warning}
+This wiki is still work in progress in big parts based on AI-generated content. Its content should therefore be taken with a grain of salt.
+```
+
 Running ALF directly using the compiled Fortran executable and parameter files. This gives full control over every aspect of the simulation.
 
 ## Directory Setup

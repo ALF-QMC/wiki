@@ -1,5 +1,9 @@
 # HMC Parameters
 
+```{warning}
+This wiki is still work in progress in big parts based on AI-generated content. Its content should therefore be taken with a grain of salt.
+```
+
 Tuning the Hybrid Monte Carlo (HMC) updating scheme in ALF. HMC is available for models with continuous auxiliary fields (`OP_V%type=3`).
 
 > **Reference:** The algorithm is derived in the [documentation (PDF)](https://alf.physik.uni-wuerzburg.de/doc.pdf), Section on Hybrid Monte Carlo.

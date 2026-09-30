@@ -1,5 +1,9 @@
 # Troubleshooting and FAQ
 
+```{warning}
+This wiki is still work in progress in big parts based on AI-generated content. Its content should therefore be taken with a grain of salt.
+```
+
 Common issues and their solutions.
 
 ## Build Issues

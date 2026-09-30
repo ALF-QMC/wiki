@@ -1,5 +1,9 @@
 # Analytic Continuation
 
+```{warning}
+This wiki is still work in progress in big parts based on AI-generated content. Its content should therefore be taken with a grain of salt.
+```
+
 Maximum entropy and stochastic analytic continuation methods for extracting real-frequency spectral functions from imaginary-time data.
 
 ## Overview

@@ -1,5 +1,9 @@
 # Production Run Cycle
 
+```{warning}
+This wiki is still work in progress in big parts based on AI-generated content. Its content should therefore be taken with a grain of salt.
+```
+
 This page explains how to obtain precise simulation data with ALF. The focus is on choosing the simulation control parameters — the knobs that determine whether your data is trustworthy and your compute time well spent. The physics parameters (which model, which coupling, which lattice size) depend on the specific study and are covered elsewhere; here we concentrate on the machinery.
 
 ## The Iterative Cycle

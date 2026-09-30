@@ -1,5 +1,9 @@
 # Discretization
 
+```{warning}
+This wiki is still work in progress in big parts based on AI-generated content. Its content should therefore be taken with a grain of salt.
+```
+
 Choosing the imaginary-time discretization `Dtau` and managing Trotter errors. This applies to **every** ALF simulation.
 
 ## Parameters

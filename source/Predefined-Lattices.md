@@ -1,5 +1,9 @@
 # Predefined Lattices
 
+```{warning}
+This wiki is still work in progress in big parts based on AI-generated content. Its content should therefore be taken with a grain of salt.
+```
+
 Reference for the Bravais lattices available in ALF. These are implemented in `Prog/Predefined_Latt_mod.F90` and selected via the `Lattice_type` string in the `&VAR_lattice` namelist.
 
 ## Parameters
