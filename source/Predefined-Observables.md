@@ -1,5 +1,9 @@
 # Predefined Observables
 
+```{warning}
+This wiki is still work in progress in big parts based on AI-generated content. Its content should therefore be taken with a grain of salt.
+```
+
 Reference for the observable types available in ALF. These are implemented in `Prog/Predefined_Obs_mod.F90` and can be used in any Hamiltonian's `Alloc_obs`, `Obser`, and `ObserT` subroutines.
 
 ## Observable Data Types

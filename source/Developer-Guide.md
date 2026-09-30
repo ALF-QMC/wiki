@@ -1,5 +1,9 @@
 # Developer Guide
 
+```{warning}
+This wiki is still work in progress in big parts based on AI-generated content. Its content should therefore be taken with a grain of salt.
+```
+
 Information for contributors and maintainers of the ALF codebase.
 
 ## Getting Started

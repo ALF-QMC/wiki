@@ -1,5 +1,9 @@
 # Code Architecture
 
+```{warning}
+This wiki is still work in progress in big parts based on AI-generated content. Its content should therefore be taken with a grain of salt.
+```
+
 Overview of the ALF module structure and data flow.
 
 ## Source Directories

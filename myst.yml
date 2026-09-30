@@ -2,10 +2,15 @@
 version: 1
 project:
   id: b1d9732e-5576-4bcf-a9af-56b5dd347334
-  title: ALF Wiki
+  title: ALF Wiki (Work in Progress | partially AI generated)
   description: A wiki for the ALF project
   # keywords: []
-  # authors: []
+  authors:
+    - name: ALF Collaboration
+      email: 'tp1-alf@uni-wuerzburg.de'
+      url: 'https://alf.physik.uni-wuerzburg.de/'
+  bibliography:
+    - bibfile.bib
   github: https://github.com/ALF-QMC/wiki
   toc:
     - file: source/Home.md
@@ -24,6 +29,7 @@ project:
         children:
           - file: source/Predefined-Lattices.md
           - file: source/Predefined-Observables.md
+          - file: source/own-model-example/own-model-example.md
       - file: source/Analysis-Tools.md
         children:
           - file: source/HDF5-Output-Format.md
@@ -48,13 +54,11 @@ project:
       children:
         - file: source/Running-on-Clusters.md
         - file: source/Troubleshooting-and-FAQ.md
-    - title: Development
+    - file: source/Developer-Guide.md
       children:
-      - file: source/Developer-Guide.md
-        children:
-          - file: source/Test-Suite.md
-          - file: source/Code-Architecture.md
-          - file: source/Release-Process.md
+        - file: source/Test-Suite.md
+        - file: source/Code-Architecture.md
+        - file: source/Release-Process.md
     - file: source/Glossary.md
     
 site:

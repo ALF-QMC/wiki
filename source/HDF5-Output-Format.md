@@ -1,5 +1,9 @@
 # HDF5 Output Format
 
+```{warning}
+This wiki is still work in progress in big parts based on AI-generated content. Its content should therefore be taken with a grain of salt.
+```
+
 Structure of the HDF5 files produced by ALF simulations compiled with the `HDF5` flag.
 
 ## Output Files

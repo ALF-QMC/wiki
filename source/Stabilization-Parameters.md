@@ -1,5 +1,9 @@
 # Stabilization Parameters
 
+```{warning}
+This wiki is still work in progress in big parts based on AI-generated content. Its content should therefore be taken with a grain of salt.
+```
+
 Numerical stabilization settings in ALF. These apply to **every** simulation regardless of the update scheme.
 
 > **Reference:** The stabilization algorithm is described in the [documentation (PDF)](https://alf.physik.uni-wuerzburg.de/doc.pdf), Section on numerical stabilization.

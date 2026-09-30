@@ -1,5 +1,9 @@
 # Running with pyALF
 
+```{warning}
+This wiki is still work in progress in big parts based on AI-generated content. Its content should therefore be taken with a grain of salt.
+```
+
 [pyALF](https://github.com/ALF-QMC/pyALF) is a Python interface that wraps ALF's parameter generation, compilation, execution, and analysis into a single scripted workflow. It is the recommended way to run ALF for most users.
 
 Full documentation: [pyALF docs](https://alf.physik.uni-wuerzburg.de/pyalf-doc/source/front.html)

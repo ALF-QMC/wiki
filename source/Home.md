@@ -4,6 +4,10 @@ Welcome to the ALF wiki! This is the practical companion to the [formal document
 
 **Project website**: https://alf.physik.uni-wuerzburg.de/
 
+```{warning}
+This wiki is still work in progress in big parts based on AI-generated content. Its content should therefore be taken with a grain of salt.
+```
+
 <!-- Automatic Table of Contents -->
 
 ```{toc}

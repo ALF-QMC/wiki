@@ -1,4 +1,3 @@
-
 # MALA updates
 
 The Metropolis-adjusted Langevin algorithm (MALA) updates continuous

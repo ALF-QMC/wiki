@@ -1,5 +1,9 @@
 # Test Suite
 
+```{warning}
+This wiki is still work in progress in big parts based on AI-generated content. Its content should therefore be taken with a grain of salt.
+```
+
 Running and writing tests for ALF. The test suite lives in `testsuite/` and uses CMake + CTest.
 
 ## Running Tests
