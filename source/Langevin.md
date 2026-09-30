@@ -1,9 +1,5 @@
 # Langevin updates
 
-```{warning}
-This wiki is still work in progress in big parts based on AI-generated content. Its content should therefore be taken with a grain of salt.
-```
-
 ALF's Langevin mode updates **continuous real auxiliary fields**.  It is a
 global update: during one Langevin step every field is changed and there is no
 Metropolis acceptance/rejection step.
