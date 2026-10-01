@@ -5,18 +5,21 @@ authors:
     orcid: 0000-0003-3794-8631
 ---
 
-# How to build your own model
+# Model building example
 
-On the example of Dirac fermions coupled to an Ising model
+Dirac fermions coupled to an Ising model.
+
+:::{toc} Contents
+:context: page
+:::
 
 ## Introduction
 
 ### The Physics
 
 Nematic quantum criticality in Dirac systems: {cite}`Schwab22`.
-
-![image](test.pdf)
-
+::::{grid} 1 1 2 2
+:::{grid-item}
 - Nematic phase transition of Dirac Fermions
 
   - Break rotation symmetry without opening a gap\
@@ -30,28 +33,59 @@ Nematic quantum criticality in Dirac systems: {cite}`Schwab22`.
   $\Rightarrow$ Numerical (and experimental) results do **not**
   represent IR fixed point\
   $\bullet$ Quasiuniversality
+:::
+
+:::{grid-item}
+```{figure} test.pdf
+:label: nematic-demo
+
+Display of nematic shift of dispersion.
+```
+:::
+::::
 
 ### The Model
 
 $$\mathcal{H} = \mathcal{H}_0 + \mathcal{H}_\text{Ising} + \mathcal{H}_\text{Yuk}$$
 
-- Non-interacting Dirac fermions
+
+::::{grid} 2 3 3 3
+:::{grid-item}
+:columns: 1
+![π-flux square latice](latt1_0.pdf)
+:::
+:::{grid-item}
+:columns: 2
+**$\mathcal{H}_0$** Non-interacting Dirac fermions
 
   - $\pi$-flux square lattice
+:::
 
-- Transverse-field Ising model\
-  $\mathcal{H}_\text{Ising} = -J \sum_{\langle \boldsymbol{R},\boldsymbol{R}' \rangle} \hat{s}_{\boldsymbol{R}}^z \hat{s}_{\boldsymbol{R}'}^z -h \sum_{\boldsymbol{R}} \hat{s}_{\boldsymbol{R}}^x$
+:::{grid-item}
+:columns: 1
+![Transverse-field Ising model](latt1_Ising.pdf)
+:::
+:::{grid-item}
+:columns: 2
+**$\mathcal{H}_\text{Ising}$** Transverse-field Ising model
+  - $\mathcal{H}_\text{Ising} = -J \sum_{\langle \boldsymbol{R},\boldsymbol{R}' \rangle} \hat{s}_{\boldsymbol{R}}^z \hat{s}_{\boldsymbol{R}'}^z -h \sum_{\boldsymbol{R}} \hat{s}_{\boldsymbol{R}}^x$
+:::
 
-- Yukawa interaction
-
+:::{grid-item}
+:columns: 1
+![Yukawa interaction](latt1_Yuk.pdf)
+:::
+:::{grid-item}
+:columns: 2
+**$\mathcal{H}_\text{Yuk}$** Yukawa interaction
   - Couple fermions to spins through terms of form
     $\alpha \hat{s}_{\boldsymbol{R}}^z \hat{c}^\dag_{\boldsymbol{R}} \hat{c}_{\boldsymbol{R}+\boldsymbol{\delta}}$
+:::
+::::
 
-![image](latt1_0.pdf)
+---
 
-![image](latt1_Ising.pdf)
-
-![image](latt1_Yuk.pdf)
+**Map to ALF Hamiltonian**
 
 $$\begin{aligned}
 \hat{\mathcal{H}}
@@ -95,6 +129,8 @@ $$\begin{aligned}
 \end{aligned}$$
 
 $$\begin{aligned}
+&\Rightarrow 
+&
 \mathcal{H}_0 &= \hat{\mathcal{H}}_{T}
 &
 \mathcal{H}_\text{Yuk} &= \hat{\mathcal{H}}_{I}
@@ -103,9 +139,11 @@ $$\begin{aligned}
 &
 \end{aligned}$$
 
+---
+
 ## Write Hamiltonian
 
-To Do Goal: Write a new Hamiltonian called `Nematic_Dirac_demo`
+Goal: Write a new Hamiltonian called `Nematic_Dirac_demo`
 
 Steps necessary:
 
@@ -128,6 +166,8 @@ Steps necessary:
 
 2.  Add `Nematic_Dirac_demo` to `Prog/Hamiltonians.list`
 
+---
+
 Copy template
 
 ```sh
@@ -136,18 +176,22 @@ cp Hamiltonian_##NAME##_smod.F90 Hamiltonian_Nematic_Dirac_demo_smod.F90
 
 Replace all occurrences of `##NAME##` with `Nematic_Dirac_demo`
 
-Add optional procedure `S0` to enable Ising dynamics
+:::{dropdown} Add optional procedure `S0` to enable Ising dynamics
 ```fortran
         procedure, nopass :: S0
 ```
+:::
 
-Define parameters Parameter specification:
+Define parameters 
 
+:::{note} Parameter specification:
 - Starts with `#PARAMETERS START# <namelist name>`
 - Ends with `#PARAMETERS END#`
 - One parameter per line, with default value
 - Optional: Description
+:::
 
+:::{dropdown} Parameter block
 ```fortran
       !#PARAMETERS START# VAR_Nematic_Dirac
       !Integer :: N_SUN = 2       ! SU(N) symmetry
@@ -162,6 +206,7 @@ Define parameters Parameter specification:
       real(Kind=Kind(0.d0)) :: Ham_chem = 0.d0 ! Chemical potential
       !#PARAMETERS END#
 ```
+:::
 
 Test with
 
@@ -169,7 +214,8 @@ Test with
 ../parse_ham.py --test_file Hamiltonian_Nematic_Dirac_demo_smod.F90
 ```
 
-Declare additional Hamiltonian-wide variables
+
+:::{dropdown} Declare additional Hamiltonian-wide variables
 ```fortran
       Type (Unit_cell), target :: latt_unit_ising
 
@@ -184,6 +230,7 @@ Declare additional Hamiltonian-wide variables
       !> Counting measurements
       Integer :: n_measure = 0
 ```
+:::
 
 
 Populate `Ham_set` body:
@@ -198,6 +245,7 @@ Populate `Ham_set` body:
 
 - Setup the interaction.
 
+:::{dropdown} `Ham_set` body
 ```fortran
           ! From dynamically generated file "Hamiltonian_Nematic_Dirac_read_write_parameters.F90"
           call read_parameters()
@@ -219,9 +267,10 @@ Populate `Ham_set` body:
           call Ham_V()
           call Setup_Ising_action
 ```
+:::
 
-- Write parameters to info file
 
+:::{dropdown} Write parameters to info file
 ```fortran
              Open(newunit=unit_info, file=file_info, status="unknown", position="append")
              Write(unit_info,*) '====================================='
@@ -238,6 +287,7 @@ Populate `Ham_set` body:
              Write(unit_info,*) 'Ham_chem            : ', Ham_chem
              Close(unit_info)
 ```
+:::
 
 ### Lattice
 
@@ -256,10 +306,15 @@ $$\begin{aligned}
 \text{Ising spins:} & \begin{pmatrix} 0 \\ 0 \end{pmatrix}
 \end{aligned}$$
 
-![image](latt1_0.pdf)
+::::{figure}
+:class: grid grid-cols-2 items-end gap-4
+:label: fig_latt
 
-![image](latt1_Ising.pdf)
+![Fermion lattice](latt1_0.pdf)
+![Ising lattive](latt1_Ising.pdf)
+::::
 
+:::{dropdown} Lattice code
 ```fortran
         subroutine ham_latt()
             implicit none
@@ -304,11 +359,19 @@ $$\begin{aligned}
             Enddo
           end subroutine ham_latt
 ```
+:::
 
 ### Hopping
 
-![image](latt1_0.pdf)
+::::{grid} 1 1 1 1
+:::{grid-item}
+```{image} latt1_0.pdf
+:width: 300px
+:align: center
+```
+:::
 
+:::{grid-item}
 $$\begin{aligned}
   \mathcal{H}_0 & = -t\sum_{\boldsymbol{R}} \sum_{\sigma=1}^{N_\sigma}
                         \hat{a}_{\boldsymbol{R},\sigma}^\dag
@@ -318,6 +381,8 @@ $$\begin{aligned}
                              + \hat{b}_{\boldsymbol{R}-\boldsymbol{e}_+,\sigma}      \mathrm{e}^{ i\tfrac{\pi}{4}}
                                \Big) + \mathrm{h.c.},
 \end{aligned}$$
+:::
+::::
 
 
 - `call Op_make(Op_T(n_check, nf), size_of_op)`
@@ -328,6 +393,7 @@ $$\begin{aligned}
 
 Sum over $\sigma$ is builtin.
 
+:::{dropdown} Set hopping operator `Op_T`
 ```fortran
         subroutine ham_hop()
             implicit none
@@ -369,10 +435,16 @@ Sum over $\sigma$ is builtin.
             Call Op_set(Op_T(1,1))
           end subroutine ham_hop
 ```
+:::
 
 ### Interaction
 
-![image](latt1_Yuk.pdf)
+
+```{image} latt1_Yuk.pdf
+:width: 300px
+:align: center
+```
+
 $$\begin{aligned}
   \mathcal{H}_\text{Yuk} & = -\xi \sum_{\boldsymbol{R}} \sum_{\sigma=1}^{N_\sigma}
                  \hat{s}_{\boldsymbol{R}}^z \hat{a}^\dag_{\boldsymbol{R},\sigma}
@@ -392,6 +464,7 @@ $$\begin{aligned}
 
 Sum over $\sigma$ is builtin.
 
+:::{dropdown} Set interaction operator `Op_V`
 ```fortran
         subroutine Ham_V()
             implicit none
@@ -429,13 +502,16 @@ Sum over $\sigma$ is builtin.
   
           end subroutine Ham_V
 ```
+:::
 
 
-Ising action: Mapping to $d$+1-dimensional classical Ising model
+**Ising action**
+
 $$\begin{aligned}
   \mathcal{H}_\text{Ising} = -J \sum_{\langle \boldsymbol{R},\boldsymbol{R}' \rangle} \hat{s}_{\boldsymbol{R}}^z \hat{s}_{\boldsymbol{R}'}^z -h \sum_{\boldsymbol{R}} \hat{s}_{\boldsymbol{R}}^x,
 \end{aligned}$$
 
+:::{dropdown} Mapping to $d$+1-dimensional classical Ising model
 Trotter decomposition:
 $$
 Z &= \text{Tr}\left[\exp(-\beta H_\text{Ising})\right] \\
@@ -467,6 +543,8 @@ $$\begin{aligned}
        &\qquad \gamma = -\tfrac{1}{2}\ln( \tanh\, h\Delta_\tau)
        \qquad \lambda = \sqrt{\sinh(h\Delta_\tau)\cosh(h\Delta_\tau)}
 \end{aligned}$$
+:::
+
 Single spin flip:
 $$\begin{aligned}
 \frac{e^{-S_{\text{Ising}}(C_\text{new})}} {e^{-S_{\text{Ising}}(C_\text{old})}} = \left\{
@@ -482,32 +560,31 @@ $$\begin{aligned}
 \right.
 \end{aligned}$$
 
+:::{dropdown} Code for Ising action
 ```fortran
         Subroutine Setup_Ising_action()
+          ! This subroutine sets up lists and arrays to enable an
+          ! an efficient calculation of  S0(n,nt)
 
-            ! This subroutine sets up lists and arrays to enable an
-            ! an efficient calculation of  S0(n,nt)
-  
-            Implicit none
-            Integer :: I
-  
-            allocate(Ising_nnlist(Latt%N,4))
-            N_ising = Latt%N
-            do I = 1, Latt%N
-              Ising_nnlist(I,1) = Latt%nnlist(I, 1, 0)
-              Ising_nnlist(I,2) = Latt%nnlist(I, 0, 1)
-              Ising_nnlist(I,3) = Latt%nnlist(I,-1, 0)
-              Ising_nnlist(I,4) = Latt%nnlist(I, 0,-1)
-            enddo
-  
-            ! exp(-S0(new))/exp(-S0(old)) of one Ising bond. Index is sa*sb
-            DW_Ising_tau  ( 1) = tanh(Dtau*Ham_h)
-            DW_Ising_tau  (-1) = 1.D0/DW_Ising_tau(1)
-            DW_Ising_Space( 1) = exp(-2.d0*Dtau*Ham_J)
-            DW_Ising_Space(-1) = exp( 2.d0*Dtau*Ham_J)
-          End Subroutine Setup_Ising_action
+          Implicit none
+          Integer :: I
 
-! Define Ising dynamics
+          allocate(Ising_nnlist(Latt%N,4))
+          N_ising = Latt%N
+          do I = 1, Latt%N
+            Ising_nnlist(I,1) = Latt%nnlist(I, 1, 0)
+            Ising_nnlist(I,2) = Latt%nnlist(I, 0, 1)
+            Ising_nnlist(I,3) = Latt%nnlist(I,-1, 0)
+            Ising_nnlist(I,4) = Latt%nnlist(I, 0,-1)
+          enddo
+
+          ! exp(-S0(new))/exp(-S0(old)) of one Ising bond. Index is sa*sb
+          DW_Ising_tau  ( 1) = tanh(Dtau*Ham_h)
+          DW_Ising_tau  (-1) = 1.D0/DW_Ising_tau(1)
+          DW_Ising_Space( 1) = exp(-2.d0*Dtau*Ham_J)
+          DW_Ising_Space(-1) = exp( 2.d0*Dtau*Ham_J)
+        End Subroutine Setup_Ising_action
+
 
 !===================================================================================
 !--------------------------------------------------------------------
@@ -521,14 +598,14 @@ $$\begin{aligned}
 !> a spin flip of Operator n on time slice nt
 !> @details
 !--------------------------------------------------------------------
-          Real (Kind=Kind(0.d0)) function S0(n,nt,Hs_new)
+        Real (Kind=Kind(0.d0)) function S0(n,nt,Hs_new)
           Implicit none
           !> Operator index
           Integer, Intent(IN) :: n
           !> Time slice
           Integer, Intent(IN) :: nt
           !> New local field on time slice nt and operator index n
-          Real (Kind=Kind(0.d0)), Intent(In) :: Hs_new
+          Complex(Kind=Kind(0.d0)), Intent(In) :: Hs_new
 
           Integer :: nt1,I
           S0 = 1.d0
@@ -544,7 +621,6 @@ $$\begin{aligned}
               S0 = S0*DW_Ising_tau(nsigma%i(n,nt)*nsigma%i(n,nt1))
               If (S0 < 0.d0) Write(6,*) 'S0 : ', S0
           endif
-
         end function S0
 
 
@@ -563,7 +639,6 @@ $$\begin{aligned}
 !> \endverbatim
 !-------------------------------------------------------------------
         Real (Kind=kind(0.d0)) Function Delta_S0_global(nsigma_old)
-      
           !>  This function computes the ratio:  e^{-S0(nsigma%f)}/e^{-S0(nsigma_old)}
           Implicit none
       
@@ -604,9 +679,9 @@ $$\begin{aligned}
       
           Delta_S0_global = ( sinh(Dtau*Ham_h)**nc_h_m ) * (cosh(Dtau*Ham_h)**nc_h_p) &
                   &         * exp( Dtau * Ham_J*real(nc_J,kind(0.d0)))
-      
         end Function Delta_S0_global
 ```
+:::
 
 ## Define Observables
 
@@ -638,6 +713,7 @@ Observables
 - `Den`:
   $\sum_{\boldsymbol{R}'} \langle \hat{n}_{\boldsymbol{R}'} \hat{n}_{\boldsymbol{R}'+\boldsymbol{R}} \rangle$
 
+:::{dropdown} Body of `Alloc_obs`
 ```fortran
           ! Scalar observables
           Allocate ( Obs_scal(5) )
@@ -714,9 +790,10 @@ Observables
              enddo
           endif
 ```
+:::
 
-Generic funtion for kinetic energy
 
+:::{dropdown} Generic funtion for kinetic energy
 ```fortran
         function E_kin(GRC)
             Implicit none
@@ -739,6 +816,7 @@ Generic funtion for kinetic energy
             E_kin = E_kin * dble(N_SUN)
          end function E_kin
 ```
+:::
 
 ### Obser
 
@@ -765,12 +843,28 @@ Correlation functions
   Correlation
   $\Braket{\hat{O}_{\boldsymbol{R}, no1}\hat{O}_{\boldsymbol{R}+\boldsymbol{R}(imj), no2}}$
 
+:::{dropdown} Body of  `Obser`
 ```fortran
           Complex (Kind=Kind(0.d0)) :: Z_z_ising, Z_x_ising, Z_m
           Complex (Kind=Kind(0.d0)) :: Zkin, Zpot, Zrho
           Integer :: nc1, imj, nt1, nt, dnt, Ntau1, n, I1
 
+          ZP = PHASE/Real(Phase, kind(0.D0))
+          ZS = Real(Phase, kind(0.D0))/Abs(Real(Phase, kind(0.D0)))
 
+          ZS = ZS*Mc_step_weight
+
+          allocate(GRC(Ndim,Ndim,N_FL))
+          
+          Do nf = 1,N_FL
+             Do I = 1,Ndim
+                Do J = 1,Ndim
+                   GRC(I, J, nf) = -GR(J, I, nf)
+                Enddo
+                GRC(I, I, nf) = 1.D0 + GRC(I, I, nf)
+             Enddo
+          Enddo
+          ! GRC(i,j,nf) = < c^{dagger}_{i,nf } c_{j,nf } >
 
           ! Compute scalar observables.
           Do I = 1,Size(Obs_scal,1)
@@ -830,8 +924,9 @@ Correlation functions
           Obs_scal(5)%Obs_vec(2) = Obs_scal(5)%Obs_vec(2) + Z_m**2 *ZP*ZS
           Obs_scal(5)%Obs_vec(3) = Obs_scal(5)%Obs_vec(3) + Z_m**4 *ZP*ZS
       
+
+
           ! Compute equal-time correlations
-      
           ! counting up correlation functions
           ! DO I = 1,Size(Obs_eq,1)
           DO I = 1,2
@@ -909,16 +1004,19 @@ Correlation functions
        
           endif
 ```
+:::
 
 ### ObserT
 
 Calculate time-displaced observables: `ObserT` Analogous to equal time
 correlation functions
 
+:::{dropdown} Body of  `ObserT`
 ```fortran
-          call Predefined_Obs_tau_Green_measure( Latt, Latt_unit, List, NT, GT0,G0T,G00,GTT,  N_SUN, ZS, ZP, Obs_tau(1) )
-          call Predefined_Obs_tau_Den_measure( Latt, Latt_unit, List, NT, GT0,G0T,G00,GTT,  N_SUN, ZS, ZP, Obs_tau(2) )
+          call Predefined_Obs_tau_Green_measure( Latt, Latt_unit, List, NT, GT0,G0T,G00,GTT, N_SUN, ZS, ZP, Obs_tau(1) )
+          call Predefined_Obs_tau_Den_measure( Latt, Latt_unit, List, NT, GT0,G0T,G00,GTT, N_SUN, ZS, ZP, Obs_tau(2) )
 ```
+:::
 
 
 ## Finishing
@@ -926,3 +1024,25 @@ correlation functions
 - Add `Nematic_Dirac_demo` to `Prog/Hamiltonians.list`
 - (Try to) compile
 - Test run
+
+```python
+#!/usr/bin/env python3
+from py_alf import ALF_source, Simulation
+
+# Point to ALF source directory
+alf_src = ALF_source(alf_dir=".")
+
+# Create a simulation object
+sim = Simulation(
+    alf_src,
+    "Nematic_Dirac_demo",  # Hamiltonian name
+    {},                    # Empty dictionary: default parameters
+    machine='GNU',         # Compiler: 'GNU', 'intel', or 'PGI'
+    devel=True,            # Development mode for debugging capabilities
+)
+
+sim.compile()
+sim.run()
+sim.analysis()
+sim.print_info_file()
+```
