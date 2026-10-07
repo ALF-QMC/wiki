@@ -37,6 +37,10 @@ jobs:
           node-version: 18.x
       - name: Install MyST
         run: npm install -g mystmd
+      - name: Install image processing dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y imagemagick webp
       - name: Validate notebooks
         run: |
           python - <<'PY'
