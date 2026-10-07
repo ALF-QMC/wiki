@@ -9,10 +9,6 @@ authors:
 
 Dirac fermions coupled to an Ising model.
 
-:::{toc} Contents
-:context: page
-:::
-
 ## Introduction
 
 ### The Physics
@@ -87,11 +83,11 @@ $$\mathcal{H} = \mathcal{H}_0 + \mathcal{H}_\text{Ising} + \mathcal{H}_\text{Yuk
 
 **Map to ALF Hamiltonian**
 
-$$\begin{aligned}
+\begin{align}
 \hat{\mathcal{H}}
 &=
-\hat{\mathcal{H}}_{T}+\hat{\mathcal{H}}_{V} +  \hat{\mathcal{H}}_{I} +   \hat{\mathcal{H}}_{0,I}\,,\;\text{where}
-\\
+\hat{\mathcal{H}}_{T}+\hat{\mathcal{H}}_{V} +  \hat{\mathcal{H}}_{I} +   \hat{\mathcal{H}}_{Q}  + \hat{\mathcal{H}}_{0,I}\,,\;\text{where}
+\label{eqn:general_ham}\\
 \hat{\mathcal{H}}_{T}
 &=
 \sum\limits_{k=1}^{M_T}
@@ -99,7 +95,7 @@ $$\begin{aligned}
 \sum\limits_{s=1}^{N_{\mathrm{fl}}}
 \sum\limits_{x,y}^{N_{\mathrm{dim}}}
 \hat{c}^{\dagger}_{x \sigma   s}T_{xy}^{(k s)} \hat{c}^{\phantom\dagger}_{y \sigma s}  \equiv  \sum\limits_{k=1}^{M_T} \hat{T}^{(k)}
-\,,\\
+\label{eqn:general_ham_t}\,,\\
 \hat{\mathcal{H}}_{V}
 &=
 \sum\limits_{k=1}^{M_V}U_{k}
@@ -115,7 +111,7 @@ $$\begin{aligned}
 \right]
 \right\}^{2}  \equiv   
 \sum\limits_{k=1}^{M_V}U_{k}   \left(\hat{V}^{(k)} \right)^2
-\,,\\
+\label{eqn:general_ham_v}\,,\\
 \hat{\mathcal{H}}_{I}
 & = 
 \sum\limits_{k=1}^{M_I} \hat{Z}_{k} 
@@ -125,8 +121,23 @@ $$\begin{aligned}
 \sum\limits_{x,y}^{N_{\mathrm{dim}}}
 \hat{c}^{\dagger}_{x \sigma s} I_{xy}^{(k s)}\hat{c}^{\phantom\dagger}_{y \sigma s}
 \right) \equiv \sum\limits_{k=1}^{M_I} \hat{Z}_{k}    \hat{I}^{(k)} 
-\,.
-\end{aligned}$$
+\, ,\label{eqn:general_ham_i} \, \\
+\hat{\mathcal{H}}_{Q}
+& = 
+\sum\limits_{k=1}^{M_Q} \tilde{U}_{k} \left( 1 +  \hat{Q}_k \right) 
+ \left\{
+\sum\limits_{\sigma=1}^{N_{\mathrm{col}}}
+\sum\limits_{s=1}^{N_{\mathrm{fl}}}
+\left[
+\left(
+\sum\limits_{x,y}^{N_{\mathrm{dim}}}
+\hat{c}^{\dagger}_{x \sigma s}\tilde{V}_{xy}^{(k s)}\hat{c}^{\phantom\dagger}_{y \sigma s}
+\right)
++\tilde{\alpha}_{k s} 
+\right]
+\right\}^{2} 
+\,.\label{eqn:general_ham_Q}
+\end{align}
 
 $$\begin{aligned}
 &\Rightarrow 
